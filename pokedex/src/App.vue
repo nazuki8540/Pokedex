@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-
+    <div v-for="(poke,index) in pokemons" :key="index">
+      <h1>{{ index + 1 }} {{poke.name}}</h1>
+    </div>
   </div>
 </template>
 <script>
@@ -15,15 +17,13 @@ export default {
   created: function(){
     axios.get("https://pokeapi.co/api/v2/pokemon?limit=152&offset=0").then(res => {
       console.log("Pegou a lista de pokemons");
-      this.pokemns = res.data.results;
-    }).catch(err => {
-      console.log(err);
+      this.pokemons = res.data.results;
     })
   }
 }
 </script>
 
-<style lang="scss">
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,7 +31,4 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
-
-
 </style>
