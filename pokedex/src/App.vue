@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <div v-for="(poke,index) in pokemons" :key="index">
-      <h1>{{ index + 1 }} {{poke.name}}</h1>
+    <div class="column is-half is-offset-one-quarter">
+      <div v-for="(poke,index) in pokemons" :key="index">
+        <Pokemon :name="poke.name" :url="poke.url" :num="index+1"/>
+      </div>
     </div>
+    
   </div>
 </template>
 <script>
 import axios from 'axios';
+import Pokemon from './components/Pokemon.vue';
 export default {
+  
   name: 'App',
   data(){
     return{
@@ -19,6 +24,9 @@ export default {
       console.log("Pegou a lista de pokemons");
       this.pokemons = res.data.results;
     })
+  },
+  components: {
+    Pokemon
   }
 }
 </script>
