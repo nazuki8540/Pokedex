@@ -4,8 +4,22 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
-  name: 'app'
+  name: 'App',
+  data(){
+    return{
+      pokemons: []
+    }
+  },
+  created: function(){
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=152&offset=0").then(res => {
+      console.log("Pegou a lista de pokemons");
+      this.pokemns = res.data.results;
+    }).catch(err => {
+      console.log(err);
+    })
+  }
 }
 </script>
 
@@ -18,16 +32,6 @@ export default {
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
