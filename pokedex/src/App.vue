@@ -3,6 +3,8 @@
     <div class="column is-half is-offset-one-quarter">
       <img src="./assets/Pokédex_logo.webp" alt="Logotipo da empresa">
       <hr>
+      <input class="input" type="text" name="busca"  placeholder="Buscar pokemon pelo nome" v-model="busca">
+      <button id="busca" class="button is-link">Busca</button>
       <div v-for="(poke,index) in pokemons" :key="index">
         <Pokemon :name="poke.name" :url="poke.url" :num="index+1"/>
       </div>
@@ -18,7 +20,8 @@ export default {
   name: 'App',
   data(){
     return{
-      pokemons: []
+      pokemons: [],
+      busca: ''
     }
   },
   created: function(){
@@ -40,5 +43,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#busca {
+  margin-top: 10px;
 }
 </style>
