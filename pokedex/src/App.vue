@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div class="column is-half is-offset-one-quarter">
-      <img src="./assets/Pokédex_logo.webp" alt="Logotipo da empresa">
+      <img src="./assets/logo.svg" alt="Logotipo da empresa">
       <hr>
       <input class="input" type="text" name="busca"  placeholder="Buscar pokemon pelo nome" v-model="busca">
       <button id="busca" class="button is-link" @click="buscar">Busca</button>
-      <div v-for="(poke,index) in filteredPokemons" :key="poke.url">
+      <div v-for="(poke,index) in filteredPokemons" :key="poke.urlindex">
         <Pokemon :name="poke.name" :url="poke.url" :num="index+1"/>
       </div>
     </div>
